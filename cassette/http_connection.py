@@ -39,7 +39,7 @@ class CassetteConnectionMixin(object):
             try:
                 if (isinstance(self, UL3CassetteHTTPConnection) and
                         hasattr(self, 'sock')):
-                    del self.sock
+                    self.sock = None
             except NameError:
                 pass
 
@@ -104,3 +104,4 @@ else:
                                      requests_urllib3.connection.HTTPSConnection):
 
         _baseclass = requests_urllib3.connection.HTTPSConnection
+        socket_options = None
