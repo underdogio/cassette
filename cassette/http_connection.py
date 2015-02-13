@@ -104,3 +104,7 @@ else:
                                      requests_urllib3.connection.HTTPSConnection):
 
         _baseclass = requests_urllib3.connection.HTTPSConnection
+
+        def __init__(self, *args, **kwargs):
+            self.socket_options = [(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)]
+            return super(UL3CassetteHTTPConnection, self).__init__(*args, **kwargs)
