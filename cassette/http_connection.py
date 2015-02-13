@@ -40,7 +40,10 @@ class CassetteConnectionMixin(object):
                 if (isinstance(self, UL3CassetteHTTPConnection) and
                         hasattr(self, 'sock') and
                         self.sock is None):
-                    del self.sock
+                    class Socket(object):
+                        def settimeout(self, timeout):
+                            pass
+                    self.sock = Socket()
             except NameError:
                 pass
 
