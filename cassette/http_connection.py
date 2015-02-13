@@ -106,5 +106,7 @@ else:
         _baseclass = requests_urllib3.connection.HTTPSConnection
 
         def __init__(self, *args, **kwargs):
-            self.socket_options = [(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)]
-            return super(UL3CassetteHTTPConnection, self).__init__(*args, **kwargs)
+            # `requests@2.5.1` leverages urllib3's `urlopen` which requires `socket_options` to be defined
+            # https://github.com/shazow/urllib3/blob/1.10.1/urllib3/connection.py#L92-L94
+            # https://github.com/shazow/urllib3/blob/1.10.1/urllib3/connection.py#L113-L115
+            return requests_urllib3.connection.HTTPSConnection.__init__(self, *args, **kwargs)
