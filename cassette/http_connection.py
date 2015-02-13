@@ -36,16 +36,12 @@ class CassetteConnectionMixin(object):
             #
             # TODO: If we're going to add more adaptors to this module, this
             # class shouldn't know anything about its parent classes.
-            try:
-                if (isinstance(self, UL3CassetteHTTPConnection) and
-                        hasattr(self, 'sock') and
-                        self.sock is None):
-                    class Socket(object):
-                        def settimeout(self, timeout):
-                            pass
-                    self.sock = Socket()
-            except NameError:
-                pass
+            # try:
+            #     if (isinstance(self, UL3CassetteHTTPConnection) and
+            #             hasattr(self, 'sock')):
+            #         del self.sock
+            # except NameError:
+            #     pass
 
             return
 
