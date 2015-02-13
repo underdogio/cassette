@@ -93,7 +93,6 @@ try:
     from requests.packages import urllib3 as requests_urllib3
     # We must de-reference HTTPConnection before __init__ since there is magic changing to `httplib.HTTPConnection`
     requests_urllib3_HTTPConnection = requests_urllib3.connection.HTTPConnection
-    requests_urllib3_HTTPSConnection = requests_urllib3.connection.UnverifiedHTTPSConnection
 except ImportError:
     pass
 else:
