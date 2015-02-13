@@ -38,9 +38,9 @@ class CassetteConnectionMixin(object):
             # class shouldn't know anything about its parent classes.
             try:
                 if (isinstance(self, UL3CassetteHTTPConnection) and
-                        hasattr(self, 'sock')):
-                    if not hasattr(self.sock, 'settimeout'):
-                        del self.sock
+                        hasattr(self, 'sock') and
+                        self.sock is None):
+                    del self.sock
             except NameError:
                 pass
 
