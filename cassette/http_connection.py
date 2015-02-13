@@ -111,6 +111,4 @@ else:
             # `requests@2.5.1` leverages urllib3's `urlopen` which requires `socket_options` to be defined
             # https://github.com/shazow/urllib3/blob/1.10.1/urllib3/connection.py#L92-L94
             # https://github.com/shazow/urllib3/blob/1.10.1/urllib3/connection.py#L113-L115
-            print requests_urllib3_HTTPConnection
-            self.socket_options = requests_urllib3.connection.HTTPConnection.default_socket_options
-            return super(UL3CassetteHTTPConnection, self).__init__(*args, **kwargs)
+            requests_urllib3_HTTPConnection.__init__(self, *args, **kwargs)
